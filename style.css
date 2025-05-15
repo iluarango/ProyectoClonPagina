@@ -1,108 +1,156 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    list-style: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* overflow: hidden; */
 }
 
 .video-hero-section-1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .navigation {
-    position: absolute; /* ← hace que quede sobre el video */
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
-    color: white;
-    z-index: 1; /* ← asegura que esté sobre el video */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  z-index: 1;
 }
 
 .nav-line {
-    position: absolute;
-    top: 70px; /* ajusta según la altura de tu header */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    height: 1px;
-    background-color: white;
-    border: none;
-    z-index: 1;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 1px;
+  background-color: white;
+  border: none;
+  z-index: 0;
+}
+
+.logo-mercedez {
+  height: 50px;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggle-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
 }
 
 .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    z-index: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.text-1{
-    font-size: 25px;
-    letter-spacing: 5px;
-    margin: 0 0 10px 0;
+.hero-text .text-1,
+.hero-text .text-2,
+.hero-text .boton {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.text-2{
-    font-size: 70px;
-    letter-spacing: 20px;
+.hero-text.animate .text-1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+.hero-text.animate .text-2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+.hero-text.animate .boton {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.8s;
 }
 
-.boton{
-    border: none;
-    border-radius: 50px;
-    background-color: white;
-    color: black;
-    margin: 15px 0 0 0;
-    padding: 15px 80px 15px 80px;
-    letter-spacing: 3px;
-    cursor: pointer;
+.hero-text.hide .text-1 {
+  opacity: 0;
+  transform: translateY(50px);
+  transition-delay: 0.1s;
+}
+.hero-text.hide .text-2 {
+  opacity: 0;
+  transform: translateY(50px);
+  transition-delay: 0.3s;
+}
+.hero-text.hide .boton {
+  opacity: 0;
+  transform: translateY(50px);
+  transition-delay: 0.5s;
 }
 
-.nav-left, .nav-right{
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.text-1 {
+  font-size: 25px;
+  letter-spacing: 5px;
+  margin: 0 0 10px 0;
 }
 
-.toggle-menu{
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    cursor: pointer;
+.text-2 {
+  font-size: 70px;
+  letter-spacing: 20px;
+  font-weight: 100;
 }
 
-/* Menú lateral Rolls-Royce */
+.boton {
+  border: none;
+  border-radius: 50px;
+  background-color: white;
+  color: black;
+  margin-top: 15px;
+  padding: 15px 80px;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
 .menu {
   position: fixed;
   top: 0;
-  left: -700px; /* Oculto al inicio */
+  left: -700px;
   width: 630px;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6); /* fondo negro semitransparente */
-  backdrop-filter: blur(10px);    /* efecto de difuminado */
-  -webkit-backdrop-filter: blur(10px); /* compatibilidad Safari */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
@@ -136,32 +184,7 @@
   opacity: 1;
 }
 
-.toggle-menu {
-  cursor: pointer;
-}
-
-.logo-mercedez{
-    height: 50px;
-}
-
-.nav-line{
-    margin: 15px auto; 
-    border: none;
-    height: 1px;
-    background-color: #ccc;
-    width: 90%;
-    z-index: 0;
-}
-
-.hero-text{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-main {
-  position: relative;
-  z-index: 1;
-  margin-top: 100vh; 
+main{
+    position: absolute;
+    top: 100%;
 }

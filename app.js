@@ -2,13 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const menu = document.querySelector('.menu');
   const toggleBtn = document.querySelector('.toggle-menu');
   const navItems = document.querySelectorAll('.nav-item');
+  const heroText = document.querySelector('.hero-text');
+
+  setTimeout(() => {
+    heroText.classList.add('animate');
+  }, 300);
 
   function openMenu() {
     menu.classList.add('open');
+    heroText.classList.remove('animate');
+    heroText.classList.add('hide');
+
     navItems.forEach((item, index) => {
       setTimeout(() => {
         item.classList.add('active');
-      }, (navItems.length - 1 - index) * 150); 
+      }, (navItems.length - 1 - index) * 150);
     });
   }
 
@@ -16,10 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
     navItems.forEach((item, index) => {
       setTimeout(() => {
         item.classList.remove('active');
-      }, index * 150); 
+      }, index * 150);
     });
+
     setTimeout(() => {
       menu.classList.remove('open');
+      heroText.classList.remove('hide');
+      heroText.classList.add('animate');
     }, navItems.length * 150 + 300);
   }
 
@@ -33,10 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.addEventListener('click', (e) => {
-    if (menu.classList.contains('open')) {
-      if (!menu.contains(e.target) && e.target !== toggleBtn) {
-        closeMenu();
-      }
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+      closeMenu();
     }
   });
 
