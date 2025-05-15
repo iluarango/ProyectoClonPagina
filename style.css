@@ -2,4 +2,166 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.video-hero-section-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.navigation {
+    position: absolute; /* ← hace que quede sobre el video */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    z-index: 1; /* ← asegura que esté sobre el video */
+}
+
+.nav-line {
+    position: absolute;
+    top: 70px; /* ajusta según la altura de tu header */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 1px;
+    background-color: white;
+    border: none;
+    z-index: 1;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 0;
+}
+
+.text-1{
+    font-size: 25px;
+    letter-spacing: 5px;
+    margin: 0 0 10px 0;
+}
+
+.text-2{
+    font-size: 70px;
+    letter-spacing: 20px;
+}
+
+.boton{
+    border: none;
+    border-radius: 50px;
+    background-color: white;
+    color: black;
+    margin: 15px 0 0 0;
+    padding: 15px 80px 15px 80px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.nav-left, .nav-right{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.toggle-menu{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+
+/* Menú lateral Rolls-Royce */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -700px; /* Oculto al inicio */
+  width: 630px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* fondo negro semitransparente */
+  backdrop-filter: blur(10px);    /* efecto de difuminado */
+  -webkit-backdrop-filter: blur(10px); /* compatibilidad Safari */
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  transition: left 0.5s ease;
+  z-index: 999;
+}
+
+.menu.open {
+  left: 0;
+}
+
+.nav-item {
+  transform: translateX(-100%);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: right;
+  opacity: 0;
+  padding: 1.2rem;
+  padding-right: 40px;
+  overflow: hidden;
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+  margin-top: 20px; 
+}
+
+.nav-item.active {
+  transform: translateX(0); 
+  opacity: 1;
+}
+
+.toggle-menu {
+  cursor: pointer;
+}
+
+.logo-mercedez{
+    height: 50px;
+}
+
+.nav-line{
+    margin: 15px auto; 
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    width: 90%;
+    z-index: 0;
+}
+
+.hero-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  margin-top: 100vh; 
 }
